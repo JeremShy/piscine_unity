@@ -388,6 +388,7 @@ MonoBehaviour:
   A: {fileID: 1502271638230292, guid: 9edbdbfc051c24e158696683663f4b56, type: 2}
   S: {fileID: 1989515532126424, guid: 03f9d7943c3eb4a8f9038c58fdc2acfa, type: 2}
   D: {fileID: 1954428144892832, guid: 6317662bb43034f608e394b7e67b53cb, type: 2}
+  timeUntilNextSpawn: 0
 --- !u!1 &655685832
 GameObject:
   m_ObjectHideFlags: 0

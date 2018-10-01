@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DescendingKey : MonoBehaviour {
+public class Cube : MonoBehaviour {
 	
 	static float	abs(float val)
 	{
@@ -31,7 +31,7 @@ public class DescendingKey : MonoBehaviour {
 		{
 			float precision;
 
-			precision = DescendingKey.abs(this.transform.position.y - BottomLine.transform.position.y) * 100;
+			precision = Cube.abs(this.transform.position.y - BottomLine.transform.position.y) * 100;
 			Debug.Log("Precision: " + precision);
 			GameObject.Destroy(this.gameObject);
 		}
