@@ -26,7 +26,7 @@ public class Club : MonoBehaviour {
 		else
 			return (1);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (ended)
@@ -39,12 +39,13 @@ public class Club : MonoBehaviour {
 				ended = true;
 			}
 		}
-		if (ball.getSpeed() > 0)
+		if (!ball.isStopped())
 			return ;
 		if (ball.getSpeed() == 0 && waiting)
 		{
 			waiting = false;
 			this.transform.position = ball.transform.position + new Vector3(0, .7f, 0) * find_direction();
+			return ;
 		}
 
 		if (Input.GetKey(KeyCode.Space))
