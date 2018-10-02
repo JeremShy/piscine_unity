@@ -35,8 +35,6 @@ public class playerScript_ex02 : MonoBehaviour {
 	}
 
 	private void OnTriggerExit2D(Collider2D other) {
-		// if ((other.tag == "wall" || other.tag == "player"))
-		// 	grounded = false;
 		if (other.tag == exit_tag)
 			wellPlaced = false;
 	}

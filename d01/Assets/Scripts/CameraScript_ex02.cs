@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CameraScript_ex02 : MonoBehaviour {
 
 	public playerScript_ex02 red;
 	public playerScript_ex02 blue;
 	public playerScript_ex02 yellow;
 
+	public string nextLevel;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +35,7 @@ public class CameraScript_ex02 : MonoBehaviour {
 		transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y + .4f, transform.position.z);
 		if (red.wellPlaced && blue.wellPlaced && yellow.wellPlaced)
 		{
-			print("You won !");
+			SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
 		}
 	}
 
