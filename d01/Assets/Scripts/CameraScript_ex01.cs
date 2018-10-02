@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraScript_ex01 : MonoBehaviour {
 
@@ -34,7 +35,7 @@ public class CameraScript_ex01 : MonoBehaviour {
 		transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y + .4f, transform.position.z);
 		if (red.wellPlaced && blue.wellPlaced && yellow.wellPlaced)
 		{
-			print("You won !");
+			SceneManager.LoadScene("ex02", LoadSceneMode.Single);
 		}
 	}
 
