@@ -8,6 +8,7 @@ TagManager:
   - red_exit
   - yellow_exit
   - wall
+  - teleporter
   layers:
   - Default
   - TransparentFX

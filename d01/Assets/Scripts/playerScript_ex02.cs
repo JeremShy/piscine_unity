@@ -32,6 +32,11 @@ public class playerScript_ex02 : MonoBehaviour {
 	{
 		if (other.tag == exit_tag)
 			wellPlaced = true;
+		if (other.tag == "teleporter")
+		{
+			Teleporter tp = other.GetComponent<Teleporter>();
+			transform.position = tp.boundTp.transform.position;
+		}
 	}
 
 	private void OnTriggerExit2D(Collider2D other) {
