@@ -25,12 +25,12 @@ TagManager:
   - Yellow_obstacle
   - Red_obstacle
   - Blue_obstacle
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - red_button
+  - blue_button
+  - yellow_button
+  - red_yellow_button
+  - red_blue_button
+  - yellow_blue_button
   - 
   - 
   - 
