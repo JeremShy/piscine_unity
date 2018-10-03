@@ -8,35 +8,54 @@ public class CameraScript_ex02 : MonoBehaviour {
 	public playerScript_ex02 blue;
 	public playerScript_ex02 yellow;
 
+	[HideInInspector]
+	public bool stopFollowing;
+	private float time;
+
 	public string nextLevel;
 
 	// Use this for initialization
 	void Start () {
+		stopFollowing = false;
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.R))
+		if (stopFollowing)
 		{
-			red.reset();
-			blue.reset();
-			yellow.reset();
-			select(red);
+			time += Time.deltaTime;
+			if (time >= 3)
+				Reset();
 		}
-		handleSelection();
-
-		playerScript_ex02 selected;
-		if (red.selected)
-			selected = red;
-		else if (blue.selected)
-			selected = blue;
 		else
-			selected = yellow;
-		transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y + .4f, transform.position.z);
-		if (red.wellPlaced && blue.wellPlaced && yellow.wellPlaced)
 		{
-			SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
+			if (Input.GetKey(KeyCode.R))
+			{
+				Reset();
+			}
+			handleSelection();
+
+			if (!stopFollowing)
+			{
+				playerScript_ex02 selected;
+				if (red.selected)
+					selected = red;
+				else if (blue.selected)
+					selected = blue;
+				else
+					selected = yellow;
+				transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y + .4f, transform.position.z);
+			}
+			if (red.wellPlaced && blue.wellPlaced && yellow.wellPlaced)
+			{
+				SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
+			}
 		}
+	}
+
+	public void Reset() {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	void handleSelection()

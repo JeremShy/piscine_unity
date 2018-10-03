@@ -2587,6 +2587,7 @@ MonoBehaviour:
   selected: 1
   exit_tag: red_exit
   maxSpeed: 1.6
+  camera: {fileID: 1897870857}
   rb2d: {fileID: 0}
   wellPlaced: 0
 --- !u!50 &383106069
@@ -5875,6 +5876,7 @@ MonoBehaviour:
   selected: 0
   exit_tag: blue_exit
   maxSpeed: 1.4
+  camera: {fileID: 1897870857}
   rb2d: {fileID: 0}
   wellPlaced: 0
 --- !u!50 &778053013
@@ -12687,6 +12689,7 @@ MonoBehaviour:
   red: {fileID: 383106068}
   blue: {fileID: 778053012}
   yellow: {fileID: 2086887252}
+  stopFollowing: 0
   nextLevel: ex03
 --- !u!81 &1897870858
 AudioListener:
@@ -13854,6 +13857,7 @@ MonoBehaviour:
   selected: 0
   exit_tag: yellow_exit
   maxSpeed: 1.8
+  camera: {fileID: 1897870857}
   rb2d: {fileID: 0}
   wellPlaced: 0
 --- !u!50 &2086887253

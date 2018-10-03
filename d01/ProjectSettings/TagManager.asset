@@ -9,6 +9,8 @@ TagManager:
   - yellow_exit
   - wall
   - teleporter
+  - missile
+  - hole
   layers:
   - Default
   - TransparentFX
@@ -31,7 +33,7 @@ TagManager:
   - red_yellow_button
   - red_blue_button
   - yellow_blue_button
-  - 
+  - missile
   - 
   - 
   - 

@@ -9,8 +9,9 @@ public class playerScript_ex02 : MonoBehaviour {
 	public string exit_tag;
 	public float	maxSpeed;
 
+	public CameraScript_ex02 camera;
+
 	private bool grounded = true;
-	private Vector3 startpos;
 
 
 	[HideInInspector]
@@ -18,9 +19,10 @@ public class playerScript_ex02 : MonoBehaviour {
 	
 	[HideInInspector]
 	public bool			wellPlaced = false;
+	private Vector3 startPos;
 	void Start () {
-		startpos = transform.position;
 		rb2d = GetComponent<Rigidbody2D>();
+		startPos = transform.position;
 	}
 	void OnTriggerStay2D(Collider2D other)
 	{
@@ -37,6 +39,20 @@ public class playerScript_ex02 : MonoBehaviour {
 			Teleporter tp = other.GetComponent<Teleporter>();
 			transform.position = tp.boundTp.transform.position;
 		}
+		if (other.tag == "missile")
+		{
+			die();
+		}
+		if (other.tag == "hole")
+		{
+			camera.stopFollowing = true;
+		}
+	}
+
+	void die()
+	{
+		transform.position = startPos;
+		rb2d.velocity = Vector2.zero;
 	}
 
 	private void OnTriggerExit2D(Collider2D other) {
@@ -45,7 +61,7 @@ public class playerScript_ex02 : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (!selected)
+		if (!selected || camera.stopFollowing)
 			return ;
 		lateralUpdate();
 		verticalUpdate();
@@ -70,11 +86,5 @@ public class playerScript_ex02 : MonoBehaviour {
 			rb2d.AddForce(new Vector2(0, jump_speed));
 			grounded = false;
 		}
-	}
-
-	public void reset() {
-		Debug.Log("Reseting");
-		transform.position = startpos;
-		rb2d.velocity = Vector2.zero;
 	}
 }
