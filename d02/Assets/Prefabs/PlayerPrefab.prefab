@@ -92,6 +92,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ff0f110849344bb0b2f78518fc225c4, type: 3}
   - {fileID: 8300000, guid: 2a038d89e478a41429cc0c039b63d5f6, type: 3}
   - {fileID: 8300000, guid: 531e4f7fc5f56449ea2222079f15e638, type: 3}
+  onAttack: {fileID: 8300000, guid: 17f68d85555874ef98829666c7ad080e, type: 3}
 --- !u!212 &212529541279227674
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,6 +102,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -116,6 +118,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

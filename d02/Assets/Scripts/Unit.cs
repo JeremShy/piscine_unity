@@ -22,6 +22,7 @@ public abstract class Unit : Attackable {
 	protected Direction _direction;
 	private Animator _animator;
 	public AudioClip[] onMove;
+	public AudioClip onAttack;
 	private bool _attacking = false;
 	private Attackable _target;
 	private Direction _lastDirection;
@@ -73,6 +74,7 @@ public abstract class Unit : Attackable {
 				} else {
 					face (_target.transform.position);
 					if (!_moving) {
+						AudioManager.instance.Play(onAttack);
 						_moving = true;
 						_animator.SetBool ("moving", true);
 					}

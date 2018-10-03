@@ -53,8 +53,6 @@ public class PlayerScript : Unit {
 	}
 }
 
-
-
 //Droite		: positif	- 0
 //haut droite	: positif	- positif
 //Haut			: 0			- positif
