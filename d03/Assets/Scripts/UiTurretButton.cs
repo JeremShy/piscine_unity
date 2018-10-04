@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class UiTurretButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
 	// private Image image;
+	public	GameObject towerPrefab;
 	private GameObject copy;
 
 	// Use this for initialization
@@ -31,17 +32,36 @@ public class UiTurretButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		Debug.Log("OnDrag");
 		Vector3 pos = Camera.main.ScreenToWorldPoint(eventData.position);
 		pos.z = copy.transform.position.z;
 		copy.transform.position = pos;
-		// transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	}
 
 	 public void OnEndDrag(PointerEventData eventData)
 	{
 		Debug.Log("OnEndDrag");
-		// copy.SetActive(tr);
+		// GameObject.Destroy(copy);
+		Vector3 pos = Camera.main.ScreenToWorldPoint(eventData.position);
+		pos.z = 10;
+
+		RaycastHit2D hit = Physics2D.Raycast(pos , new Vector3(0, 0, -1));
+		if (hit.collider == null)
+		{
+			Debug.Log("No collider.");
+		}
+		else
+		{
+			if (hit.collider.tag != "empty")
+			{
+				Debug.Log("Collision not empty");
+			}
+			else
+			{
+				Debug.Log("Collided an empty tile !");
+				GameObject.Instantiate(towerPrefab, hit.collider.transform.position, hit.collider.transform.rotation, hit.collider.transform.parent);
+			}
+		}
+		GameObject.Destroy(copy);
 	}
 
 }
