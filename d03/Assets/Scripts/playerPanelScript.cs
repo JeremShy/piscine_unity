@@ -7,7 +7,6 @@ public class playerPanelScript : MonoBehaviour {
 	// Use this for initialization
 	public Text hpText;
 	public Text energyText;
-	public gameManager gameManager;
 	void Start () {
 		refresh();
 	}
@@ -19,7 +18,7 @@ public class playerPanelScript : MonoBehaviour {
 
 	void refresh()
 	{
-		hpText.text = gameManager.playerHp.ToString();
-		energyText.text = gameManager.playerEnergy.ToString();
+		hpText.text = gameManager.gm.playerHp.ToString();
+		energyText.text = gameManager.gm.playerEnergy.ToString();
 	}
 }

@@ -61,5 +61,6 @@ public class gameManager : MonoBehaviour {
 	public void gameOver() {
 		Time.timeScale = 0;
 		Debug.Log ("Game Over");
+		EndGame.eg.print_panel(false);
 	}
 }

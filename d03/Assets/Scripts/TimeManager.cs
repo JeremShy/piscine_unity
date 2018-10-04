@@ -8,7 +8,6 @@ public class TimeManager : MonoBehaviour {
 	private float speed = 1;
 
 	public Text speedText;
-	public gameManager gameManager;
 
 	// Use this for initialization
 	void Start () {
@@ -40,7 +39,7 @@ public class TimeManager : MonoBehaviour {
 	{
 		speed = f;
 		speedText.text = speedToStr();
-		gameManager.changeSpeed(speed);
+		gameManager.gm.changeSpeed(speed);
 	}
 
 

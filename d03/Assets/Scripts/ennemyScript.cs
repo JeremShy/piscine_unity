@@ -69,6 +69,7 @@ public class ennemyScript : MonoBehaviour {
 				}
 			}
 			Debug.Log ("Victoire !");
+			EndGame.eg.print_panel(true);
 		}
 	}
 }
