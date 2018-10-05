@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour {
 
@@ -12,6 +13,9 @@ public class EndGame : MonoBehaviour {
 	public Text scoreText;
 	public Text gradeText;
 	public GameObject endGamePanel;
+
+	public Button tryAgainButton;
+	public Button nextLevelButton;
 
 	void Awake()
 	{
@@ -28,17 +32,32 @@ public class EndGame : MonoBehaviour {
 	void Update () {
 	}
 
+	public void nextLevelButtonPress()
+	{
+		Debug.Log("Pressed next level button");
+	}
+	public void tryAgainButtonPress()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
 	int calculateScore(bool win) // Returns an int between 1 and 5, 1 being 'F' and 5  being 'SSS+'
 	{
+		int score;
 		if (gameManager.gm.playerHp == gameManager.gm.playerMaxHp)
-			return (5);
-		if (gameManager.gm.playerHp > gameManager.gm.playerMaxHp - 5)
-			return (4);
-		if (gameManager.gm.playerHp > gameManager.gm.playerMaxHp / 2 && gameManager.gm.playerEnergy > gameManager.gm.playerStartEnergy / 2)
-			return (3);
-		if (gameManager.gm.playerHp > gameManager.gm.playerMaxHp / 4)
-			return (2);
-		return (1);
+			score = 5;
+		else if (gameManager.gm.playerHp > gameManager.gm.playerMaxHp - 5)
+			score = 4;
+		else if (gameManager.gm.playerHp > gameManager.gm.playerMaxHp / 2 && gameManager.gm.playerEnergy > gameManager.gm.playerStartEnergy / 2)
+			score = 3;
+		else if (gameManager.gm.playerHp > gameManager.gm.playerMaxHp / 4)
+			score = 2;
+		else
+			score = 1;
+		if (win && score < 5)
+			score++;
+		return (score);
+			
 	}
 
 	public void print_panel(bool win)
@@ -80,6 +99,16 @@ public class EndGame : MonoBehaviour {
 		{
 			gradeText.text = "S";
 			gradeText.color = Color.green;
+		}
+		if (!win)
+		{
+			tryAgainButton.gameObject.SetActive(true);
+			nextLevelButton.gameObject.SetActive(false);
+		}
+		else
+		{
+			tryAgainButton.gameObject.SetActive(false);
+			nextLevelButton.gameObject.SetActive(true);
 		}
 	}
 }
