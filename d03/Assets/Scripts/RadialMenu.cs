@@ -78,7 +78,7 @@ public class RadialMenu : MonoBehaviour {
 			Debug.Log("This shouldn't happen ! 50");
 			return ;
 		}
-		int energy = (boundTower.downgrade.GetComponent<towerScript>().energy / 2);
+		int energy = (boundTower.GetComponent<towerScript>().energy / 2);
 		gameManager.gm.playerEnergy += energy;
 		towerScript next = GameObject.Instantiate(boundTower.downgrade, boundTower.transform.position, boundTower.transform.rotation, boundTower.transform.parent).GetComponent<towerScript>();
 		GameObject.Destroy(boundTower.gameObject);
