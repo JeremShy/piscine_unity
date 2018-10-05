@@ -7,9 +7,11 @@ using UnityEngine.EventSystems;
 public class UiTurretButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
 	// private Image image;
-	public gameManager gameManager;
 	public	towerScript towerPrefab;
+	public clickableMenu clickableMenuPrefab;
 	private GameObject copy;
+
+	public Canvas mainCanvas;
 
 	public GameObject flyIcon;
 	public GameObject noFlyIcon;
@@ -42,15 +44,15 @@ public class UiTurretButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameManager.playerEnergy < towerPrefab.energy && (img.color != Color.red))
+		if (gameManager.gm.playerEnergy < towerPrefab.energy && (img.color != Color.red))
 			img.color = Color.red;
-		else if (gameManager.playerEnergy >= towerPrefab.energy && (img.color == Color.red))
+		else if (gameManager.gm.playerEnergy >= towerPrefab.energy && (img.color == Color.red))
 			img.color = Color.white;
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
-		if (gameManager.playerEnergy < towerPrefab.energy)
+		if (gameManager.gm.playerEnergy < towerPrefab.energy)
 			dragging = false;
 		else
 		{
@@ -84,8 +86,11 @@ public class UiTurretButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 			{
 				if (hit.collider.tag == "empty")
 				{
-					gameManager.playerEnergy -= towerPrefab.energy;
-					GameObject.Instantiate(towerPrefab, hit.collider.transform.position, hit.collider.transform.rotation, hit.collider.transform.parent);
+					gameManager.gm.playerEnergy -= towerPrefab.energy;
+					towerScript ts = GameObject.Instantiate(towerPrefab, hit.collider.transform.position, hit.collider.transform.rotation, hit.collider.transform.parent);
+					clickableMenu clickableMenu = GameObject.Instantiate(clickableMenuPrefab, ts.transform.position, ts.transform.rotation, ts.transform.parent);
+					clickableMenu.mainCanvas = transform.parent.parent.parent.GetComponent<Canvas>();
+					clickableMenu.boundTower = ts;
 				}
 			}
 			GameObject.Destroy(copy);

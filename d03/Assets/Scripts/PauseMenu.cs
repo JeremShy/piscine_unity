@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
 	
-	private bool paused = false;
+	[HideInInspector]
+	public static bool paused = false;
 	public GameObject panel;
 	public GameObject secondPanel;
 
@@ -18,11 +19,11 @@ public class PauseMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!paused)
+		if (!PauseMenu.paused)
 		{
 			if (Input.GetKey(KeyCode.Escape))
 			{
-				paused = true;
+				PauseMenu.paused = true;
 				gameManager.gm.pause(true);
 				panel.SetActive(true);
 			}
@@ -32,7 +33,7 @@ public class PauseMenu : MonoBehaviour {
 	public void Reprendre()
 	{
 		gameManager.gm.pause(false);
-		paused = false;
+		PauseMenu.paused = false;
 		panel.SetActive(false);
 		secondPanel.SetActive(false);
 	}

@@ -17,6 +17,8 @@ public class EndGame : MonoBehaviour {
 	public Button tryAgainButton;
 	public Button nextLevelButton;
 
+	public string nextLevel;
+
 	void Awake()
 	{
 		if (eg == null)
@@ -25,7 +27,6 @@ public class EndGame : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -34,7 +35,7 @@ public class EndGame : MonoBehaviour {
 
 	public void nextLevelButtonPress()
 	{
-		Debug.Log("Pressed next level button");
+		SceneManager.LoadScene(nextLevel);
 	}
 	public void tryAgainButtonPress()
 	{
@@ -62,6 +63,7 @@ public class EndGame : MonoBehaviour {
 
 	public void print_panel(bool win)
 	{
+		PauseMenu.paused = true;
 		endGamePanel.SetActive(true);
 		if (win)
 		{
